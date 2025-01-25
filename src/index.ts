@@ -13,6 +13,21 @@
 
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
+		const url = 'https://throbbing-field-36f6.tellsenales.workers.dev/';
+		console.log(url);
+		try {
+			const data = await fetch(url).then((res) => {
+				if (!res.ok) {
+					throw new Error(`${res.status} ${res.statusText}`);
+				}
+
+				console.log(request.url, request.method);
+				return res.text();
+			});
+			console.log(data);
+		} catch (error) {
+			console.log(error);
+		}
 		return new Response('Hello World!');
 	},
 } satisfies ExportedHandler<Env>;
