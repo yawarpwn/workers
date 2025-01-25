@@ -14,9 +14,9 @@
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
 		const url = 'https://throbbing-field-36f6.tellsenales.workers.dev/';
-		console.log(url);
+		let data;
 		try {
-			const data = await fetch(url).then((res) => {
+			data = await fetch(url).then((res) => {
 				if (!res.ok) {
 					throw new Error(`${res.status} ${res.statusText}`);
 				}
@@ -27,7 +27,8 @@ export default {
 			console.log(data);
 		} catch (error) {
 			console.log(error);
+			return new Response(error.message, { status: 500 });
 		}
-		return new Response('Hello World!');
+		return new Response(data);
 	},
 } satisfies ExportedHandler<Env>;

@@ -1,0 +1,13 @@
+name = "work"
+main = "src/index.ts"
+compatibility_date = "2025-01-24"
+
+[observability]
+"enabled" = true
+
+[[d1_databases]]
+binding = "TELLAPP_DB"
+database_name = "tellapp-db"
+database_id = "bf97a768-9f69-4eea-9204-8fb4232481b0"
+migrations_dir = "migrations"
+preview_database_id = "a4b0b0d1-9fc2-4347-a7da-9108ab0aff07" # Required for Pages local development
